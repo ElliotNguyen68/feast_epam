@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  db:
+    hostname: db
+    user: postgres
+    image: ankane/pgvector
+    container_name: pgvector3
+    ports:
+     - 5431:5432
+    restart: always
+    environment:
+      - POSTGRES_DB=bighead
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=testpwd
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - /tmp/postgresql:/data/postgres
