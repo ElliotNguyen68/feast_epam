@@ -184,5 +184,4 @@ dagster_home/history
 dagster_home/schedules
 config
 dagster.yaml
-notebooks
 registry.pb
