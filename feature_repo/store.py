@@ -18,7 +18,7 @@ def get_store():
             provider='local',
             project="bighead",
             registry=repo_config.RegistryConfig(
-                path= '../registry.pb'
+                path= 'registry.pb'
             ),
             offline_store=SparkOfflineStoreConfig(),
             batch_engine_config='spark.engine',
@@ -58,8 +58,8 @@ def apply_store(store:FeatureStore):
     print(entities_new)
     
     entities_to_delete =[entity for entity in previous_entities if entity.name not in list_entities_name]
-    feature_views_delete =[fv for fv in previous_feature_views if fv not in list_feature_views_name]
-    feature_services_delete =[fs for fs in preivous_feature_services if fs not in list_feature_services_name]
+    feature_views_delete =[fv for fv in previous_feature_views if fv.name not in list_feature_views_name]
+    feature_services_delete =[fs for fs in preivous_feature_services if fs.name not in list_feature_services_name]
     print(entities_to_delete)
     store.apply(
         objects=[*entities_new,*feature_views_new,*feature_services_new],
