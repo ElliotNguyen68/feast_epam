@@ -1,3 +1,6 @@
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
 from feast import FeatureStore,repo_config,Entity,FeatureView,FeatureService
 from feast.data_source import DataSource
 from feast.infra.offline_stores.contrib.spark_offline_store.spark import SparkOfflineStoreConfig
@@ -67,3 +70,5 @@ def apply_store(store:FeatureStore):
 if __name__=='__main__':
     store=get_store()
     apply_store(store=store)
+    dt=datetime.now()
+    store.materialize(start_date=dt-relativedelta(months=1),end_date=dt)
