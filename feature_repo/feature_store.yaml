@@ -1,0 +1,18 @@
+project: bighead
+# By default, the registry is a file (but can be turned into a more scalable SQL-backed registry)
+registry:
+  registry_type: sql
+  path: postgresql://postgres:testpwd@localhost:5431/bighead
+  cache_ttl_seconds: 60
+
+# The provider primarily specifies default offline / online stores & storing the registry in a given cloud
+provider: local
+entity_key_serialization_version: 2
+online_store:
+  type: postgres
+  host: localhost
+  port: 5432
+  database: bighead
+  db_schema: online_store
+  user: postgres
+  password: testpwd
