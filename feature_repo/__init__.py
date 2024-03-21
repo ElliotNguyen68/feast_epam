@@ -1,3 +1,4 @@
+import os
 from pyspark.sql import SparkSession
 
 def get_spark_session():
@@ -13,9 +14,13 @@ def init_spark():
         .config(
             "spark.driver.bindAddress",
             "0.0.0.0",
-        )
-        .getOrCreate()
+        ).getOrCreate()
     )
 
+def get_registry_path():
+    return os.environ['REGISTRY_PATH']
+
+def get_feature_folder_path():
+    return os.environ['FEATURE_FOLDER_PATH']
 
 init_spark()

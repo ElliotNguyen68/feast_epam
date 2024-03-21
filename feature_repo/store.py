@@ -3,7 +3,7 @@ from feast.infra.offline_stores.contrib.spark_offline_store.spark import SparkOf
 from feast.infra.materialization.contrib.spark.spark_materialization_engine import SparkMaterializationEngineConfig
 from feast.infra.online_stores.contrib.postgres import PostgreSQLOnlineStoreConfig
 
-from feature_repo import entities,feature_services,feature_views
+from feature_repo import entities,feature_services,feature_views,get_registry_path
 
 def get_store():
     pgconfig={
@@ -18,7 +18,7 @@ def get_store():
             provider='local',
             project="bighead",
             registry=repo_config.RegistryConfig(
-                path= 'registry.pb'
+                path= get_registry_path()
             ),
             offline_store=SparkOfflineStoreConfig(),
             batch_engine_config='spark.engine',
@@ -65,7 +65,8 @@ def apply_store(store:FeatureStore):
         objects=[*entities_new,*feature_views_new,*feature_services_new],
         objects_to_delete=[
             *entities_to_delete,*feature_views_delete,*feature_services_delete
-        ]
+        ],
+        partial=False
     )
     
 if __name__=='__main__':
