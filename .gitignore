@@ -185,3 +185,4 @@ dagster_home/schedules
 config
 dagster.yaml
 registry.pb
+features/*
