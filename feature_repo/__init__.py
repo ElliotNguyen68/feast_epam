@@ -7,6 +7,7 @@ def get_spark_session():
 
 def init_spark():
     global spark
+    os.environ['SPARK_LOCAL_IP']='127.0.0.1'
     spark = (
         SparkSession.builder.master("local[*]")
         .appName(name="unittest")
