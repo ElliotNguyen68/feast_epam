@@ -45,32 +45,19 @@ def apply_store(store:FeatureStore):
     list_feature_views_name=list(map(lambda x:x.name,list_feature_views))
     list_feature_services_name=list(map(lambda x:x.name,list_feature_services))
     list_datasources_name=list(map(lambda x:x.name,list_datasources))
-    print(list_entities_name)
+
     previous_entities=store.list_entities()
     previous_feature_views=store.list_feature_views()
     preivous_feature_services=store.list_feature_services()
     preivous_datasources=store.list_data_sources()
 
-    previous_entities_name=list(map(lambda x:x.name,previous_entities))
-    previous_feature_views_name=list(map(lambda x:x.name,previous_feature_views))
-    preivous_feature_services_name=list(map(lambda x:x.name,preivous_feature_services))
-    preivous_datasources_name=list(map(lambda x:x.name,preivous_datasources))
-    print(previous_entities_name)
-    
-    entities_new =[entity for entity in list_entities if entity.name not in previous_entities_name]
-    feature_views_new =[fv for fv in list_feature_views if fv.name not in previous_feature_views_name]
-    feature_services_new =[fs for fs in list_feature_services if fs.name not in preivous_feature_services_name]
-    datasources_new =[ds for ds in list_datasources if ds.name not in preivous_datasources_name]
-
-    print(entities_new)
-    
     entities_to_delete =[entity for entity in previous_entities if entity.name not in list_entities_name]
     feature_views_delete =[fv for fv in previous_feature_views if fv.name not in list_feature_views_name]
     feature_services_delete =[fs for fs in preivous_feature_services if fs.name not in list_feature_services_name]
     datasources_delete =[ds for ds in preivous_datasources if ds.name not in list_datasources_name]
-    print(entities_to_delete)
+
     store.apply(
-        objects=[*entities_new,*datasources_new,*feature_views_new,*feature_services_new],
+        objects=[*list_entities,*list_datasources,*list_feature_services,*list_feature_views],
         objects_to_delete=[
             *entities_to_delete,*datasources_delete,*feature_views_delete,*feature_services_delete
         ],
