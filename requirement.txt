@@ -2,3 +2,7 @@ psycopg2-binary
 boto3
 feast
 pyspark
+scikit-learn
+xgboost
+fastapi
+uvicorn
