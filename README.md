@@ -33,8 +33,6 @@ make apply
 ## Step 4 - Start Using 
 
 After setting up your feature store, you can start using it. If you're not sure where to start, refer to our other guides and documentation.
-```
-
 ```bash
 make api
 ```
