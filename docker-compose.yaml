@@ -15,7 +15,7 @@ services:
       - POSTGRES_PASSWORD=testpwd
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
-      - /tmp/postgresql:/data/postgres
+      - /tmp/postgresql55:/data/postgres
   zookeeper:
     image: wurstmeister/zookeeper
     container_name: zookeeper

@@ -16,7 +16,9 @@ docker-compose up -d
 You should run 01_explore notebook to generate the data. Here is how you can do that:
 
 ```bash
-jupyter notebook notebooks/01_explore.ipynb
+jupyter notebook notebooks/01_gen_data.ipynb
+jupyter notebook notebooks/04_build_feature.ipynb
+jupyter notebook notebooks/05_modeling.ipynb
 ```
 Follow the steps in the notebook to generate the data.
 
@@ -33,4 +35,6 @@ make apply
 After setting up your feature store, you can start using it. If you're not sure where to start, refer to our other guides and documentation.
 ```
 
-Remember to replace the command placeholders with your actual commands based on your configuration and setup.
+```bash
+make api
+```
